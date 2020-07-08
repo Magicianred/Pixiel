@@ -14,13 +14,13 @@
 </head>
 <body>
 <h1>Contact us</h1>
-<form id="contact-form">
+<form id="contact-form" method="POST" action="/contact">
     <label for="who">Chi</label>
     <input type="text" name="who" value="<%= qs.person %>">
     <label for="department">Dipartimento</label>
     <input type="text" name="department" value="<%= qs.dept %>">
     <label for="email">Tua email</label>
-    <input type="email" name="who"/>
+    <input type="email" name="email"/>
     <input type="submit" value="submit" />
 </form>
 </body>

@@ -1,5 +1,9 @@
 var express = require('express');
+var bodyParser = require('body-parser');
 var app = express();
+
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.set('view engine', 'ejs');
 //Serve per linkare di directory css, il primo determina il route, il secondo la cartella utilizzata
@@ -15,6 +19,11 @@ app.get('/', function (req, res) {
 app.get('/contact', function (req, res) {
     //Utilizzato quando nell'url viene specificato un certo parametro
     res.render('contact', {qs: req.query});
+});
+
+app.post('/contact', urlencodedParser, function (req, res) {
+    console.log(req.body);
+    res.render('contact-success', {data: req.body});
 });
 
 app.get('/profile/:name', function(req, res) {
