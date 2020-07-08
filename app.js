@@ -13,6 +13,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/contact', function (req, res) {
+    //Utilizzato quando nell'url viene specificato un certo parametro
     res.render('contact', {qs: req.query});
 });
 
