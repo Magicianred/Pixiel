@@ -1,0 +1,19 @@
+{
+  "name": "pixiel",
+  "version": "1.0.0",
+  "description": "Progetto per Start2impact, è una Chat Room in grado di far connettere e interagire qualsiasi persona si colleghi ad essa (in locale o in remoto). ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/carmensantoro/Pixiel.git"
+  },
+  "author": "Santoro Carmen Agnese",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/carmensantoro/Pixiel/issues"
+  },
+  "homepage": "https://github.com/carmensantoro/Pixiel#readme"
+}
