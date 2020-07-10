@@ -1,3 +1,10 @@
 # Folder
 /.idea
-/node_modules
+/Pixiel/node_modules
+/Pixiel/server/node_modules
+/Pixiel/client/node_modules
+
+# Logs
+/Pixiel/server/logs
+*.log
+npm-debug.log*
