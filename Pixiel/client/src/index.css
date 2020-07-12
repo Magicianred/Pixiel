@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'Monster Friend Fore';
+    src: local('MonsterFriendFore'), url(./components/fonts/MonsterFriendFore.otf) format('truetype');
+}
+
+h1 {
+    font-family: "Monster Friend Fore", sans-serif;
+    font-size: 50px;
+}
