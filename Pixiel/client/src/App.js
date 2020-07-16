@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 import Home from "./components/pages/Home";
-import Footer from "./components/layout/Footer";
+import StickyFooter from "./components/layout/StickyFooter";
 
 //Material UI
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
@@ -18,7 +18,10 @@ const App = () => {
                     fontFamily: "Nishuki Pixels"
                 },
                 h1: {
-                    fontFamily: "Monster Friend Fore",
+                    fontFamily: "Monster Friend Fore"
+                },
+                body1: {
+                    fontFamily: "Nishuki Pixels"
                 },
             }
         });
@@ -31,7 +34,7 @@ const App = () => {
                 <Route path="/" exact component={Home} />
             </Switch>
 
-            <Footer />
+            <StickyFooter />
             </MuiThemeProvider>
 
         </Router>
