@@ -3,7 +3,7 @@
     src: local('MonsterFriendFore'), url(./components/fonts/MonsterFriendFore.otf) format('truetype');
 }
 
-h1 {
-    font-family: "Monster Friend Fore", sans-serif;
-    font-size: 50px;
+@font-face {
+    font-family: 'Nishuki Pixels';
+    src: local('nishuki_pixels'), url(./components/fonts/nishuki_pixels.ttf) format('truetype');
 }
