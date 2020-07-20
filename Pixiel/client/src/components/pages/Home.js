@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PropTypes from "prop-types";
 
 //Material-UI
@@ -13,6 +13,11 @@ import FormToJoin from "./elements/home/FormToJoin";
 
 function Home( props ) {
     const { classes } = props;
+
+    //Hooks
+    const [nickName, setNickName] = useState('');
+    const [room, setRoom] = useState('');
+
     return (
         <>
             <Container className={classes} fixed>
@@ -26,10 +31,15 @@ function Home( props ) {
                     <Logo />
 
                     {/*Form*/}
-                    <FormToJoin />
+                    <FormToJoin
+                    setNickName = {setNickName}
+                    setRoom = {setRoom}/>
 
                     {/*Bottone per accedere*/}
-                    <JoinButton />
+                    <JoinButton
+                    nickName = {nickName}
+                    room = {room}
+                    />
 
 
                 </Grid>
