@@ -11,4 +11,4 @@ const Logo = () => {
     )
 }
 
-export default Logo.js
+export default Logo;
