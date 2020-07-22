@@ -6,7 +6,7 @@ import {withStyles} from "@material-ui/core/styles";
 import {deepPurple} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 
-const JoinButton = ({ nickName, room }) => {
+const JoinButton = ({ nickName, room, setOpen }) => {
     //Colore e style del bottone per l'accesso
     const ColorButton = withStyles((theme) => ({
         root: {
@@ -20,11 +20,23 @@ const JoinButton = ({ nickName, room }) => {
         },
     }))(Button);
 
+
+    //Animazione in caso di errore se l'utente non ha compilato il campo del nickname o della stanza
+    const handleClick = (e) => {
+        if (!nickName || !room) {
+            e.preventDefault();
+            setOpen(true);
+        } else {
+            return null
+        }
+    };
+
+
     return (
         <>
             {/*Se il bottone viene cliccato senza aggiungere i due valori, cioè nickName e room, non viene eseguito l'evento
             in caso contrario riporta alla pagina della chat, con il link che ha al suo interno i due dati immessi*/}
-            <Link style={{ textDecoration: 'none' }} onClick={event => (!nickName || !room) ? event.preventDefault() : null} to={`/chat?nickName=${nickName}&room=${room}`}>
+            <Link style={{ textDecoration: 'none' }} onClick={handleClick} to={`/chat?nickName=${nickName}&room=${room}`}>
                 <ColorButton
                     variant="contained"
                     color="primary"

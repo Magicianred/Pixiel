@@ -39,6 +39,7 @@ function Home() {
                     <JoinButton
                         nickName = {nickName}
                         room = {room}
+                        setOpen = {setOpen}
                     />
 
                     {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}

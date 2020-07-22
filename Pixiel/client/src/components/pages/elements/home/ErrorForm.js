@@ -33,15 +33,19 @@ const ErrorForm = ({ open, setOpen }) => {
 
     return (
         <>
-            <div className={classes.root}>
-            <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                <Alert onClose={handleClose} severity="error">
-                    Non hai compilato un campo!
-                </Alert>
-            </Snackbar>
-            </div>
+            {
+                open && (
+                    <div className={classes.root}>
+                        <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
+                            <Alert onClose={handleClose} severity="error">
+                                Non hai compilato un campo!
+                            </Alert>
+                        </Snackbar>
+                    </div>
+                )
+            }
         </>
-    )
-}
+    );
+};
 
 export default ErrorForm;
