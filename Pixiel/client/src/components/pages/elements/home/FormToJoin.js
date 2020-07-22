@@ -27,7 +27,7 @@ const FormToJoin = ({ setNickName, setRoom }) => {
 
         return (
             <>
-                <form className={classesFormToJoin.root, classesFormToJoin.paper} noValidate autoComplete="off">
+                <form className={classesFormToJoin.root} noValidate autoComplete="off">
                     <TextField
                         id="Nickname"
                         label="Nickname"
