@@ -45,26 +45,25 @@ const Chat = ({ location }) => {
 
 
     //Funzione per mandare i messaggi
-const sendMessage = (event) => {
-    event.preventDefault();
+    const sendMessage = (event) => {
+        event.preventDefault();
 
-    if(message) {
-        socket.emit('sendMessage', message, () => setMessage(''));
+        if(message) {
+            socket.emit('sendMessage', message, () => setMessage(''));
+        }
     }
-}
 
 
-console.log(message, messages);
+    console.log(message, messages);
 
     return (
-<div className="container">
-    {/*onKeyPress non funziona, devo controllare qual'è il problema*/}
-                <input
-                    value={message}
-                    onChange={(event) => setMessage(event.target.value)}
-                    onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null }
-                />
-            </div>
+        <div className="container">
+            <input
+                value={message}
+                onChange={(event) => setMessage(event.target.value)}
+                onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null }
+            />
+        </div>
     )
 }
 

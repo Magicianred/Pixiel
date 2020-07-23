@@ -31,7 +31,7 @@ io.on('connection', (socket) => {
     });
 
 
-    socket.on('sentMessage', ( message, callback ) => {
+    socket.on('sendMessage', ( message, callback ) => {
         const user = getUser(socket.id);
 
         io.to(user.room).emit('message', {user: user.nickName, text: message});
