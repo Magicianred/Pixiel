@@ -2,6 +2,14 @@ import React, { useState, useEffect } from "react";
 import queryString from 'query-string';
 import io from 'socket.io-client';
 
+//Material-UI
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
+//Componenti creati da me
+import TextChat from "./elements/chat/TextChat";
+
+
 let socket;
 
 const Chat = ({ location }) => {
@@ -44,26 +52,27 @@ const Chat = ({ location }) => {
     }, [messages]);
 
 
-    //Funzione per mandare i messaggi
-    const sendMessage = (event) => {
-        event.preventDefault();
-
-        if(message) {
-            socket.emit('sendMessage', message, () => setMessage(''));
-        }
-    }
-
-
     console.log(message, messages);
 
     return (
-        <div className="container">
-            <input
-                value={message}
-                onChange={(event) => setMessage(event.target.value)}
-                onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null }
-            />
-        </div>
+        <>
+        <Container fixed>
+            <Grid
+                container
+                direction="column"
+                justify="center"
+                alignItems="center">
+
+                {/*Text Chat*/}
+                <TextChat
+                    message={message}
+                    setMessage={setMessage}
+                    socket={socket}
+                />
+
+            </Grid>
+        </Container>
+            </>
     )
 }
 
