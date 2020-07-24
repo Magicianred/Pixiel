@@ -6,20 +6,22 @@ import {withStyles} from "@material-ui/core/styles";
 import {deepPurple} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
 
-const JoinButton = ({ nickName, room, setOpen }) => {
-    //Colore e style del bottone per l'accesso
-    const ColorButton = withStyles((theme) => ({
-        root: {
-            color: theme.palette.getContrastText(deepPurple[500]),
-            fontSize: 20,
-            backgroundColor: deepPurple[500],
-            '&:hover': {
-                backgroundColor: deepPurple[300],
-            },
-            margin: theme.spacing(6, 0, 2),
-        },
-    }))(Button);
 
+//Colore e style del bottone per l'accesso
+const ColorButton = withStyles((theme) => ({
+    root: {
+        color: theme.palette.getContrastText(deepPurple[500]),
+        fontSize: 20,
+        backgroundColor: deepPurple[500],
+        '&:hover': {
+            backgroundColor: deepPurple[300],
+        },
+        margin: theme.spacing(6, 0, 2),
+    },
+}))(Button);
+
+
+const JoinButton = ({ nickName, room, setOpen }) => {
 
     //Animazione in caso di errore se l'utente non ha compilato il campo del nickname o della stanza
     const handleClick = (e) => {
