@@ -8,7 +8,7 @@ import Grid from '@material-ui/core/Grid';
 
 //Componenti creati da me
 import TextChat from "./elements/chat/TextChat";
-
+import InfoBar from "./elements/chat/InfoBar";
 
 let socket;
 
@@ -56,23 +56,30 @@ const Chat = ({ location }) => {
 
     return (
         <>
-        <Container fixed>
-            <Grid
-                container
-                direction="column"
-                justify="center"
-                alignItems="center">
+            {/*Barra superiore con le informazioni sulla chat*/}
+            <InfoBar
+                room={room}
+            />
 
-                {/*Text Chat*/}
-                <TextChat
-                    message={message}
-                    setMessage={setMessage}
-                    socket={socket}
-                />
 
-            </Grid>
-        </Container>
-            </>
+            <Container fixed>
+               <Grid
+                    container
+                    direction="column"
+                    justify="center"
+                    alignItems="center">
+
+
+                    {/*Parte della Chat per immettere il testo da inviare*/}
+                    <TextChat
+                        message={message}
+                        setMessage={setMessage}
+                        socket={socket}
+                    />
+
+                </Grid>
+            </Container>
+        </>
     )
 }
 
