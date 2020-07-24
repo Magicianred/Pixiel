@@ -7,9 +7,13 @@ import StickyFooter from "./components/layout/StickyFooter";
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //Pagina CSS creata da me
-import Home from "./components/pages/Home";
-import Chat from "./components/pages/Chat"
 import "./index.css";
+
+//Componenti creati da me
+import Home from "./components/pages/Home";
+import Chat from "./components/pages/Chat";
+import Credits from "./components/pages/Credits";
+
 
 const App = () => {
     const theme = createMuiTheme(
@@ -34,6 +38,7 @@ const App = () => {
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/chat" component={Chat} />
+                <Route path="/credits" component={Credits} />
             </Switch>
 
             <StickyFooter />
