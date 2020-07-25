@@ -15,22 +15,24 @@ import Chat from "./components/pages/Chat";
 import Credits from "./components/pages/Credits";
 
 
-const App = () => {
-    const theme = createMuiTheme(
-        {
-            typography: {
-                button: {
-                    fontFamily: "Nishuki Pixels"
-                },
-                h1: {
-                    fontFamily: "Monster Friend Fore"
-                },
-                body1: {
-                    fontFamily: "Nishuki Pixels"
-                },
-            }
-        });
+//Style di alcuni elementi presenti sul sito
+const theme = createMuiTheme(
+    {
+        typography: {
+            button: {
+                fontFamily: "Nishuki Pixels"
+            },
+            h1: {
+                fontFamily: "Monster Friend Fore"
+            },
+            body1: {
+                fontFamily: "Nishuki Pixels"
+            },
+        }
+    });
 
+
+const App = () => {
     return (
         <Router>
 
