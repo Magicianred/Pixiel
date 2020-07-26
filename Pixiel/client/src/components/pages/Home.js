@@ -3,12 +3,17 @@ import React, { useState } from 'react';
 //Material-UI
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from '@material-ui/core/Box';
+import Card from '@material-ui/core/Card';
+import CardHeader from '@material-ui/core/CardHeader';
+import CardContent from '@material-ui/core/CardContent';
 
 //Componenti creati da me
 import Logo from "./elements/home/Logo";
 import JoinButton from "./elements/home/JoinButton";
 import FormToJoin from "./elements/home/FormToJoin";
 import ErrorForm from "./elements/home/ErrorForm";
+import TypedText from "./elements/home/TypedText";
 
 
 function Home() {
@@ -20,36 +25,56 @@ function Home() {
 
     return (
         <>
-            <Container fixed>
-                <Grid
-                    container
-                    direction="column"
-                    justify="center"
-                    alignItems="center"
-                >
+            <Grid
+                container
+                spacing={0}
+                direction="column"
+                alignItems="center"
+                justify="center"
+                style={{ minHeight: '100vh' }}
+            >
+
+                <Card className="theme">
+
                     {/*Logo*/}
-                    <Logo />
+                    <Grid item xl={12}  align="center">
+                        <Logo />
+                    </Grid>
 
-                    {/*Form*/}
-                    <FormToJoin
-                        setNickName = {setNickName}
-                        setRoom = {setRoom}/>
 
-                    {/*Bottone per accedere*/}
-                    <JoinButton
-                        nickName = {nickName}
-                        room = {room}
-                        setOpen = {setOpen}
-                    />
+                    <CardContent>
+                        {/*Testo che spiega la funzione del sito*/}
+                        <TypedText />
 
-                    {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}
-                    <ErrorForm
-                        open = {open}
-                        setOpen = {setOpen}
-                    />
 
-                </Grid>
-            </Container>
+                        {/*Form*/}
+                        <Grid item xl={12}  align="center">
+                            <FormToJoin
+                                setNickName = {setNickName}
+                                setRoom = {setRoom}/>
+                        </Grid>
+
+
+                        {/*Bottone per accedere*/}
+                        <Grid item xl={12}  align="center">
+                            <JoinButton
+                                nickName = {nickName}
+                                room = {room}
+                                setOpen = {setOpen}
+                            />
+                        </Grid>
+                    </CardContent>
+                </Card>
+
+
+                {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}
+                <ErrorForm
+                    open = {open}
+                    setOpen = {setOpen}
+                />
+
+
+            </Grid>
         </>
     )
 }
