@@ -14,6 +14,19 @@ import JoinButton from "./elements/home/JoinButton";
 import FormToJoin from "./elements/home/FormToJoin";
 import ErrorForm from "./elements/home/ErrorForm";
 import TypedText from "./elements/home/TypedText";
+import {makeStyles} from "@material-ui/core/styles";
+
+
+const useStyles = makeStyles((theme) => ({
+    root: {
+        color: theme.palette.primary.contrastText,
+        background: theme.palette.primary.dark,
+    },
+    card: {
+        background: theme.palette.secondary.main,
+        color: theme.palette.primary.contrastText,
+    }
+}));
 
 
 function Home() {
@@ -22,10 +35,12 @@ function Home() {
     const [room, setRoom] = useState('');
     const [open, setOpen] = useState(false);
 
+    const classes = useStyles();
 
     return (
         <>
             <Grid
+                className={classes.root}
                 container
                 spacing={0}
                 direction="column"
@@ -34,7 +49,7 @@ function Home() {
                 style={{ minHeight: '100vh' }}
             >
 
-                <Card className="theme">
+                <Card className={classes.card}>
 
                     {/*Logo*/}
                     <Grid item xl={12}  align="center">
