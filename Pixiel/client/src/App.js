@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import StickyFooter from "./components/layout/StickyFooter";
 
 //Material UI
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 //Pagina CSS creata da me
 import "./index.css";
@@ -15,9 +15,23 @@ import Chat from "./components/pages/Chat";
 import Credits from "./components/pages/Credits";
 
 
-//Style di alcuni elementi presenti sul sito
+//Style con la palette primaria e secondaria e anche di alcuni elementi presenti sul sito
 const theme = createMuiTheme(
     {
+        palette: {
+            primary: {
+                light: '#484848',
+                main: '#212121',
+                dark: '#000000',
+                contrastText: '#fff',
+            },
+            secondary: {
+                light: '#9a67ea',
+                main: '#673ab7',
+                dark: '#320b86',
+                contrastText: '#fff',
+            },
+        },
         typography: {
             button: {
                 fontFamily: "Nishuki Pixels"
@@ -36,7 +50,7 @@ const App = () => {
     return (
         <Router>
 
-            <MuiThemeProvider theme={theme}>
+            <ThemeProvider theme={theme}>
             <Switch>
                 <Route path="/" exact component={Home} />
                 <Route path="/chat" component={Chat} />
@@ -44,7 +58,7 @@ const App = () => {
             </Switch>
 
             <StickyFooter />
-            </MuiThemeProvider>
+            </ThemeProvider>
 
         </Router>
     );
