@@ -4,8 +4,8 @@ import Typed from "react-typed";
 //Testo animato della pagina principale
 const textLines = [
     `Benvenuto su Pixiel`,
-    `Un luogo dove puoi creare la tua chat room`,
-    `e invitare chiunque a parteciparvi`,
+    `qui puoi creare la tua chat room`,
+    `e invitare chiunque a partecipare`,
     `Immetti il tuo Nickname`,
     `e il nome della stanza`,
     `per chattare con i tuoi amici`
