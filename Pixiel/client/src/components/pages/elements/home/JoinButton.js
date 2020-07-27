@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import {withStyles} from "@material-ui/core/styles";
 import {deepPurple} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
+import Grid from "@material-ui/core/Grid";
 
 
 //Colore e style del bottone per l'accesso
@@ -36,18 +37,22 @@ const JoinButton = ({ nickName, room, setOpen }) => {
 
     return (
         <>
+            <Grid
+                alignItems="center"
+                  justify="center"
+            >
             {/*Se il bottone viene cliccato senza aggiungere i due valori, cioè nickName e room, non viene eseguito l'evento
             in caso contrario riporta alla pagina della chat, con il link che ha al suo interno i due dati immessi*/}
             <Link style={{ textDecoration: 'none' }} onClick={handleClick} to={`/chat?nickName=${nickName}&room=${room}`}>
                 <ColorButton
                     variant="contained"
-                    color="primary"
                     size="large"
                     type="submit"
                 >
                     Accedi
                 </ColorButton>
             </Link>
+            </Grid>
         </>
     )
 }
