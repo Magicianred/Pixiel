@@ -9,7 +9,7 @@ import Link from '@material-ui/core/Link';
 
 function Copyright() {
     return (
-        <Typography variant="body1" color="textSecondary">
+        <Typography variant="body1" color="inherit">
             {'© 2020 '}
             <Link color="inherit" href="https://www.carmensantoro.it">
                 Carmen Agnese Santoro
@@ -22,13 +22,12 @@ const useStyles = makeStyles((theme) => ({
     root: {
         display: 'flex',
         flexDirection: 'column',
-        minHeight: '100vh',
     },
     footer: {
         padding: theme.spacing(3, 2),
         marginTop: 'auto',
-        backgroundColor:
-            theme.palette.type === 'dark' ? theme.palette.grey[200] : theme.palette.grey[800],
+        backgroundColor: theme.palette.primary.dark,
+        color: theme.palette.primary.contrastText,
     },
 }));
 
