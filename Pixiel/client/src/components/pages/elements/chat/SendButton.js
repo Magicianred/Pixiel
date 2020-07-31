@@ -29,8 +29,9 @@ const SendButton = ({ sendMessage }) => {
                     onClick={(event) => sendMessage(event)}
                     variant="contained"
                     color="primary"
-                    size="large"
+                    size="small"
                     type="submit"
+                    display="block"
                 >
                     Invia
                 </ColorButton>
