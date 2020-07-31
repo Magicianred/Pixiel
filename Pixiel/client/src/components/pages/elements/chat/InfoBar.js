@@ -1,14 +1,14 @@
 import React from 'react';
 
 //Material UI
-import {makeStyles, withStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import {deepPurple} from "@material-ui/core/colors";
 
 //Colore e style della App Bar
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
     root: {
         flexGrow: 1,
     },
@@ -28,7 +28,7 @@ const InfoBar = ({ room }) => {
     return (
         <>
             <div className={classes.root}>
-                <AppBar className={classes.colorDefault} position="fixed" color="default">
+                <AppBar className={classes.colorDefault} color="default">
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
                             Stanza {room}
