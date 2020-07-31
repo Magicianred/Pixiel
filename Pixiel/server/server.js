@@ -22,7 +22,7 @@ io.on('connection', (socket) => {
         if(error) return callback(error);
 
         //Messaggio che appare all'utente appena entrato
-        socket.emit('message', { user: 'admin', text: `${user.nickName}, benvenuto/a nella stanza ${user.room}`});
+        socket.emit('message', { user: 'admin', text: `${user.nickName}, benvenuto nella stanza ${user.room}`});
         //Alle persone nella stanza appare un messaggio che permettere di sapere chi è entrato in quel momento
         socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.nickName} è entrato nella stanza!`});
         socket.join(user.room);
