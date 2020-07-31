@@ -5,14 +5,35 @@ import io from 'socket.io-client';
 //Material-UI
 import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
+import Box from "@material-ui/core/Box";
 
 //Componenti creati da me
 import TextChat from "./elements/chat/TextChat";
+import InputChat from "./elements/chat/InputChat";
 import InfoBar from "./elements/chat/InfoBar";
+import {makeStyles} from "@material-ui/core/styles";
+import {deepPurple} from "@material-ui/core/colors";
+
+
+
+const useStyles = makeStyles((theme) => ({
+    outerContainer: {
+        backgroundColor: theme.palette.primary.main,
+    },
+    container: {
+        backgroundColor: deepPurple[100],
+    }
+}));
+
+
 
 let socket;
 
 const Chat = ({ location }) => {
+
+    const classes = useStyles();
+
+
     //Hooks
     const [nickName, setNickName] = useState('');
     const [room, setRoom] = useState('');
@@ -56,29 +77,53 @@ const Chat = ({ location }) => {
 
     return (
         <>
-            {/*Barra superiore con le informazioni sulla chat*/}
-            <InfoBar
-                room={room}
-            />
-
-
-            <Container fixed>
-               <Grid
-                    container
+            <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                height="100vh"
+                className={classes.outerContainer}
+            >
+                <Box
+                    display="flex"
+                    justifyContent="space-between"
                     direction="column"
-                    justify="center"
-                    alignItems="center">
+                    mt="125px"
+                    mb="60px"
+                    pb="60px"
+                    height="100%"
+                    width="75%"
+                    className={classes.container}
+                >
+                    {/*Barra superiore con le informazioni sulla chat*/}
+                    <InfoBar
+                        room={room}
+                    />
+
+
+                    <Grid
+                        container
+                        direction="column"
+                        justify="center"
+                        alignItems="center"
+                    >
+                        {/*Chat con i messaggi*/}
+                        <TextChat
+                            messages={messages}
+                            nickName={nickName}
+                        />
 
 
                     {/*Parte della Chat per immettere il testo da inviare*/}
-                    <TextChat
+                    <InputChat
                         message={message}
                         setMessage={setMessage}
                         socket={socket}
                     />
+                    </Grid>
 
-                </Grid>
-            </Container>
+                </Box>
+            </Box>
         </>
     )
 }
