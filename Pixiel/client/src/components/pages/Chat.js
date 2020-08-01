@@ -3,7 +3,8 @@ import queryString from 'query-string';
 import io from 'socket.io-client';
 
 //Material-UI
-import Container from '@material-ui/core/Container';
+import {makeStyles} from "@material-ui/core/styles";
+import {deepPurple} from "@material-ui/core/colors";
 import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
 
@@ -11,14 +12,14 @@ import Box from "@material-ui/core/Box";
 import TextChat from "./elements/chat/TextChat";
 import InputChat from "./elements/chat/InputChat";
 import InfoBar from "./elements/chat/InfoBar";
-import {makeStyles} from "@material-ui/core/styles";
-import {deepPurple} from "@material-ui/core/colors";
+import OnlinePeople from "./elements/chat/OnlinePeople";
+
 
 
 
 const useStyles = makeStyles((theme) => ({
     outerContainer: {
-        backgroundColor: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.light,
     },
     container: {
         backgroundColor: deepPurple[100],
@@ -41,7 +42,8 @@ const Chat = ({ location }) => {
     const [message, setMessage] = useState('');
     //Per salvare tutti messaggi
     const [messages, setMessages] = useState([]);
-
+    //Utenti online
+    const [users, setUsers] = useState('');
 
     const ENDPOINT = 'localhost:3001';
 
@@ -68,9 +70,13 @@ const Chat = ({ location }) => {
     //Permette di inviare i messaggi dell'admin(da server) o qualunque messaggio dell'utente nell'array
     useEffect(() => {
         socket.on('message', (message) => {
-            setMessages([...messages, message]);
-        })
-    }, [messages]);
+            setMessages(messages => [...messages, message]);
+        });
+
+        socket.on("roomData", ({ users }) => {
+            setUsers(users);
+        });
+    }, []);
 
 
     console.log(message, messages);
@@ -84,15 +90,20 @@ const Chat = ({ location }) => {
                 height="100vh"
                 className={classes.outerContainer}
             >
+                {/*Permette di vedere chi è online in quel momento*/}
+                <OnlinePeople users={users} />
+
+
                 <Box
                     display="flex"
                     justifyContent="space-between"
                     direction="column"
-                    mt="125px"
-                    mb="60px"
-                    pb="60px"
-                    height="100%"
-                    width="75%"
+                    mt="63px"
+                    xl={12}
+                    sm={12}
+                    xs={12}
+                    height="65%"
+                    width="80%"
                     className={classes.container}
                 >
                     {/*Barra superiore con le informazioni sulla chat*/}
@@ -104,8 +115,6 @@ const Chat = ({ location }) => {
                     <Grid
                         container
                         direction="column"
-                        justify="center"
-                        alignItems="center"
                     >
                         {/*Chat con i messaggi*/}
                         <TextChat
