@@ -17,6 +17,16 @@ const ColorButton = withStyles((theme) => ({
         },
         margin: theme.spacing(6, 0, 2),
     },
+    [theme.breakpoints.down('sm')]: {
+        sizeSmall: {
+            height: 35,
+            width: 15,
+
+        },
+        root: {
+            fontSize: 15,
+        }
+    }
 }))(Button);
 
 
@@ -31,7 +41,7 @@ const SendButton = ({ sendMessage }) => {
                     color="primary"
                     size="small"
                     type="submit"
-                    display="block"
+                    display="inline"
                 >
                     Invia
                 </ColorButton>
