@@ -12,12 +12,12 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Nishuki Pixels"
     },
     messageBox1: {
-        backgroundColor: deepPurple[50],
-        color: theme.palette.primary.main,
+        backgroundColor: theme.palette.primary.main,
+        color: theme.palette.secondary.contrastText,
     },
     messageBox2: {
-        backgroundColor: cyan[200],
-        color: theme.palette.primary.main,
+        backgroundColor: theme.palette.secondary.main,
+        color: theme.palette.secondary.contrastText,
     }
 }));
 
@@ -40,21 +40,26 @@ const Message = ({ message: { user, text }, nickName }) => {
                     <Box
                         display="flex"
                         justifyContent="flex-end"
+                        py={0}
+                        px="5%"
                         mt={3}
                         className={classes.root}
                     >
-                        <Box display="flex" alignItems="center">
-                            <p>{trimmedNickName}</p>
-                        </Box>
                         <Box
-                            display="block"
+                            display="inline-block"
                             className={classes.messageBox1}
                             maxWidth="80%"
-                            borderRadius="20px"
-                            pt="5px"
-                            pr="20px"
+                            py="5px"
+                            px="20px"
                         >
-                            <p>{text}</p>
+                            <Box width="100%"><p>{text}</p></Box>
+                        </Box>
+
+                        <Box
+                            display="flex"
+                            alignItems="center"
+                            pl="10px">
+                            <p>{trimmedNickName}</p>
                         </Box>
                     </Box>
                 </>
@@ -64,22 +69,24 @@ const Message = ({ message: { user, text }, nickName }) => {
                     {/*Messaggi inviato dall'admin*/}
                     <Box
                         display="flex"
-                        justifyContent="flex-end"
+                        justifyContent="flex-start"
                         mt={3}
                         className={classes.root}
                     >
                         <Box
-                            display="block"
+                            display="flex"
+                            alignItems="center"
+                            pr="10px">
+                            <p>{user}</p>
+                        </Box>
+                        <Box
+                            display="inline-block"
                             className={classes.messageBox2}
                             maxWidth="80%"
-                            borderRadius="20px"
-                            pt="5px"
-                            pr="20px"
+                            py="5px"
+                            px="20px"
                         >
-                            <p>{text}</p>
-                        </Box>
-                        <Box display="flex" alignItems="center">
-                            <p>{user}</p>
+                            <Box width="100%"><p>{text}</p></Box>
                         </Box>
                     </Box>
                 </>
