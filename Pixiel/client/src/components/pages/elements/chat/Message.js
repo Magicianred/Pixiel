@@ -1,10 +1,10 @@
 import React from 'react';
+import ReactEmoji from 'react-emoji';
 
 //Material-UI
 import Box from '@material-ui/core/Box';
 import {makeStyles} from "@material-ui/core/styles";
-import {deepPurple} from "@material-ui/core/colors";
-import {cyan} from "@material-ui/core/colors";
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const Message = ({ message: { user, text }, nickName }) => {
+const Message = ({ message: { user, text, time }, nickName }) => {
 
     const classes = useStyles();
 
@@ -52,14 +52,14 @@ const Message = ({ message: { user, text }, nickName }) => {
                             py="5px"
                             px="20px"
                         >
-                            <Box width="100%"><p>{text}</p></Box>
+                            <Box width="100%"><p>{ReactEmoji.emojify(text)}</p></Box>
                         </Box>
 
                         <Box
                             display="flex"
                             alignItems="center"
                             pl="10px">
-                            <p>{trimmedNickName}</p>
+                            <p>{trimmedNickName} {time}</p>
                         </Box>
                     </Box>
                 </>
@@ -77,7 +77,7 @@ const Message = ({ message: { user, text }, nickName }) => {
                             display="flex"
                             alignItems="center"
                             pr="10px">
-                            <p>{user}</p>
+                            <p>{user} {time}</p>
                         </Box>
                         <Box
                             display="inline-block"
@@ -86,7 +86,7 @@ const Message = ({ message: { user, text }, nickName }) => {
                             py="5px"
                             px="20px"
                         >
-                            <Box width="100%"><p>{text}</p></Box>
+                            <Box width="100%"><p>{ReactEmoji.emojify(text)}</p></Box>
                         </Box>
                     </Box>
                 </>
