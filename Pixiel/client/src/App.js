@@ -34,13 +34,10 @@ const theme = createMuiTheme(
         },
         typography: {
             button: {
-                fontFamily: "Nishuki Pixels"
-            },
-            h1: {
-                fontFamily: "Monster Friend Fore"
+                fontFamily: "Dogica Pixel Bold"
             },
             body1: {
-                fontFamily: "Nishuki Pixels"
+                fontFamily: "Dogica Pixel Bold"
             },
         }
     });
