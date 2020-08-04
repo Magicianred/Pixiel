@@ -1,6 +1,7 @@
 const express = require("express");
 const http = require("http");
 const socketIo = require("socket.io");
+const formatMessage = require('./messages');
 
 const { addUser, removeUser, getUser, getUsersInRoom } = require ("./users.js");
 
@@ -22,10 +23,13 @@ io.on('connection', (socket) => {
         if(error) return callback(error);
 
         //Messaggio che appare all'utente appena entrato
-        socket.emit('message', { user: 'admin', text: `${user.nickName}, benvenuto nella stanza ${user.room}`});
+        socket.emit('message', formatMessage( 'admin' ,`${user.nickName}, benvenuto nella stanza ${user.room}`));
         //Alle persone nella stanza appare un messaggio che permettere di sapere chi è entrato in quel momento
-        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.nickName} è entrato nella stanza!`});
+        socket.broadcast.to(user.room).emit('message', formatMessage( 'admin', `${user.nickName} è entrato nella stanza!`));
+
         socket.join(user.room);
+
+        io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) })
 
         callback();
     });
@@ -34,7 +38,8 @@ io.on('connection', (socket) => {
     socket.on('sendMessage', ( message, callback ) => {
         const user = getUser(socket.id);
 
-        io.to(user.room).emit('message', {user: user.nickName, text: message});
+        io.to(user.room).emit('message', formatMessage( user.nickName, message ));
+        io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
         callback();
     });
@@ -42,7 +47,11 @@ io.on('connection', (socket) => {
 
     //Disconnessione dal server
     socket.on('disconnect', () => {
-        console.log('Un utente si è disconnesso');
+       const user = removeUser(socket.id);
+
+       if(user){
+           io.to(user.room).emit('message', formatMessage( 'admin', `${user.nickName} si è disconnesso.`))
+       }
     })
 });
 
