@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 
 //Material-UI
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
-import Box from '@material-ui/core/Box';
 import Card from '@material-ui/core/Card';
-import CardHeader from '@material-ui/core/CardHeader';
 import CardContent from '@material-ui/core/CardContent';
 
 //Componenti creati da me
@@ -19,12 +16,14 @@ import {makeStyles} from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-        color: theme.palette.primary.contrastText,
-        background: theme.palette.primary.dark,
+       background: theme.palette.primary.light,
     },
     card: {
-        background: theme.palette.secondary.main,
+        background: theme.palette.primary.main,
         color: theme.palette.primary.contrastText,
+        [theme.breakpoints.only('xs')]: {
+            maxWidth: 300,
+        },
     }
 }));
 
@@ -49,10 +48,11 @@ function Home() {
                 style={{ minHeight: '100vh' }}
             >
 
-                <Card className={classes.card}>
+                <Card className={classes.card}
+                >
 
                     {/*Logo*/}
-                    <Grid item xl={12}  align="center">
+                    <Grid item xl={12} xs={4} align="center">
                         <Logo />
                     </Grid>
 
