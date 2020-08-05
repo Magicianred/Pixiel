@@ -4,6 +4,11 @@
 }
 
 @font-face {
-    font-family: 'Nishuki Pixels';
-    src: local('nishuki_pixels'), url(./components/fonts/nishuki_pixels.ttf) format('truetype');
+    font-family: 'Dogica Pixel';
+    src: local('dogicapixel'), url(./components/fonts/Dogicapixel/dogicapixel.ttf) format('truetype');
+}
+
+@font-face {
+    font-family: 'Dogica Pixel Bold';
+    src: local('dogicapixelbold'), url(./components/fonts/Dogicapixel/dogicapixelbold.ttf) format('truetype');
 }
