@@ -36,7 +36,7 @@ export default function StickyFooter() {
                 <Container maxWidth="sm">
                     <Typography variant="body1" color="inherit" className={classes.typography}>
                         <Link href="/Credits" className={classes.link} underline="hover">Crediti</Link>
-                            <br />
+                        <br />
                         {'© 2020 '}
                         <Link color="inherit" href="https://www.carmensantoro.it">
                             Carmen Agnese Santoro
@@ -44,6 +44,6 @@ export default function StickyFooter() {
                     </Typography>
                 </Container>
             </footer>
-            </>
+        </>
     );
 }
