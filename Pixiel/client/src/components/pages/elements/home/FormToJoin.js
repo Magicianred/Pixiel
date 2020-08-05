@@ -3,6 +3,11 @@ import React from "react";
 //Material-UI
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from '@material-ui/core/styles';
+import InputAdornment from "@material-ui/core/InputAdornment";
+
+//Componenti creati da me
+import ClearButtonRoom from "../ClearButtonRoom";
+import ClearButtonNickName from "../ClearButtonNickName";
 
 
 //Colore e style dei form per l'accesso
@@ -31,12 +36,13 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const FormToJoin = ({ setNickName, setRoom }) => {
+const FormToJoin = ({ nickName, setNickName, room, setRoom }) => {
 
         const classes = useStyles();
 
         return (
             <>
+                {/*Form per il Nickname*/}
                 <form
                     className={classes.root}
                     noValidate
@@ -47,25 +53,48 @@ const FormToJoin = ({ setNickName, setRoom }) => {
                             className: classes.input,
                         }}
                         InputProps={{
+                            endAdornment: <InputAdornment position="end">
+                                <ClearButtonNickName
+                                    nickName={nickName}
+                                    setNickName={setNickName}
+                                />
+                            </InputAdornment>,
                             className: classes.input,
                         }}
                         id="Nickname"
                         label="Nickname"
                         type="text"
+                        value={nickName}
                         color="secondary"
                         onChange={(event) => setNickName(event.target.value)}
+                        autoFocus={false}
                     />
+                    </form>
 
+
+                {/*Form per il nome della Stanza*/}
+                <form
+                    className={classes.root}
+                    noValidate
+                    autoComplete="off"
+                >
                     <TextField
                         InputLabelProps={{
                             className: classes.input,
                         }}
                         InputProps={{
+                            endAdornment: <InputAdornment position="end">
+                                <ClearButtonRoom
+                                    room={room}
+                                    setRoom={setRoom}
+                                />
+                            </InputAdornment>,
                             className: classes.input,
                         }}
                         id="Room"
                         label="Stanza"
                         type="text"
+                        value={room}
                         color="secondary"
                         onChange={(event) => setRoom(event.target.value)}
                     />
