@@ -18,7 +18,7 @@ import StickyFooter from "../layout/StickyFooter";
 
 const useStyles = makeStyles((theme) => ({
     root: {
-       background: theme.palette.primary.light,
+        background: theme.palette.primary.light,
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
@@ -43,61 +43,61 @@ function Home() {
 
     return (
         <>
-        <Box className={classes.root}>
-            <Grid
-                container
-                spacing={0}
-                direction="column"
-                alignItems="center"
-                justify="center"
-            >
-
-                <Box my={8}>
-                <Card className={classes.card}
+            <Box className={classes.root}>
+                <Grid
+                    container
+                    spacing={0}
+                    direction="column"
+                    alignItems="center"
+                    justify="center"
                 >
 
-                    {/*Logo*/}
-                    <Grid item align="center">
-                        <Logo />
-                    </Grid>
+                    <Box my={8}>
+                        <Card className={classes.card}
+                        >
+
+                            {/*Logo*/}
+                            <Grid item align="center">
+                                <Logo />
+                            </Grid>
 
 
-                    <CardContent>
-                        <Box ml={3}>
-                        {/*Testo che spiega la funzione del sito*/}
-                        <TypedText />
-                        </Box>
+                            <CardContent>
+                                <Box ml={3}>
+                                    {/*Testo che spiega la funzione del sito*/}
+                                    <TypedText />
+                                </Box>
 
 
-                        {/*Form*/}
-                        <Grid item xl={12}  align="center">
-                            <FormToJoin
-                                setNickName = {setNickName}
-                                setRoom = {setRoom}/>
-                        </Grid>
+                                {/*Form*/}
+                                <Grid item xl={12}  align="center">
+                                    <FormToJoin
+                                        setNickName = {setNickName}
+                                        setRoom = {setRoom}/>
+                                </Grid>
 
 
-                        {/*Bottone per accedere*/}
-                        <Grid item xl={12}  align="center">
-                            <JoinButton
-                                nickName = {nickName}
-                                room = {room}
-                                setOpen = {setOpen}
-                            />
-                        </Grid>
-                    </CardContent>
-                </Card>
+                                {/*Bottone per accedere*/}
+                                <Grid item xl={12}  align="center">
+                                    <JoinButton
+                                        nickName = {nickName}
+                                        room = {room}
+                                        setOpen = {setOpen}
+                                    />
+                                </Grid>
+                            </CardContent>
+                        </Card>
 
 
-                {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}
-                <ErrorForm
-                    open = {open}
-                    setOpen = {setOpen}
-                />
+                        {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}
+                        <ErrorForm
+                            open = {open}
+                            setOpen = {setOpen}
+                        />
 
-                </Box>
-            </Grid>
-            <StickyFooter />
+                    </Box>
+                </Grid>
+                <StickyFooter />
             </Box>
         </>
     )

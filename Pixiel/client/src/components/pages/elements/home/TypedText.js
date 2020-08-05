@@ -28,13 +28,13 @@ const TypedText = () => {
 
     const classes = useStyles();
 
-        return (
-            <>
-                <div className={classes.root}>
+    return (
+        <>
+            <div className={classes.root}>
                 <Typed strings={textLines} typeSpeed={100} />
-                </div>
-            </>
-        )
+            </div>
+        </>
+    )
 }
 
 export default TypedText;

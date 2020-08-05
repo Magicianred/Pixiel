@@ -23,9 +23,9 @@ const Logo = () => {
     return(
         <>
             <Box m={3}>
-            <Typography className={classes.root} variant="h1">
-                Pixiel
-            </Typography>
+                <Typography className={classes.root} variant="h1">
+                    Pixiel
+                </Typography>
             </Box>
         </>
     )
