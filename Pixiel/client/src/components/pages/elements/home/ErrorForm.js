@@ -19,6 +19,17 @@ const ErrorForm = ({ open, setOpen }) => {
                 marginTop: theme.spacing(2),
             },
         },
+        message : {
+            fontFamily: "Dogica Pixel",
+            fontSize: 15,
+            [theme.breakpoints.only('xs')]: {
+                "& .MuiAlert-message": {
+                    fontSize: 11,
+                    paddingTop: 11,
+                    paddingBottom: 11,
+                }
+                },
+        }
     }));
 
 
@@ -37,7 +48,11 @@ const ErrorForm = ({ open, setOpen }) => {
                 open && (
                     <div className={classes.root}>
                         <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-                            <Alert onClose={handleClose} severity="error">
+                            <Alert
+                                onClose={handleClose}
+                                severity="error"
+                                className={classes.message}
+                            >
                                 Non hai compilato un campo!
                             </Alert>
                         </Snackbar>
