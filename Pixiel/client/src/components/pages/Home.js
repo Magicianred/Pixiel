@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
+import Box from '@material-ui/core/Box';
 
 //Componenti creati da me
 import Logo from "./elements/home/Logo";
@@ -12,11 +13,15 @@ import FormToJoin from "./elements/home/FormToJoin";
 import ErrorForm from "./elements/home/ErrorForm";
 import TypedText from "./elements/home/TypedText";
 import {makeStyles} from "@material-ui/core/styles";
+import StickyFooter from "../layout/StickyFooter";
 
 
 const useStyles = makeStyles((theme) => ({
     root: {
        background: theme.palette.primary.light,
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
     },
     card: {
         background: theme.palette.primary.main,
@@ -38,28 +43,30 @@ function Home() {
 
     return (
         <>
+        <Box className={classes.root}>
             <Grid
-                className={classes.root}
                 container
                 spacing={0}
                 direction="column"
                 alignItems="center"
                 justify="center"
-                style={{ minHeight: '100vh' }}
             >
 
+                <Box my={8}>
                 <Card className={classes.card}
                 >
 
                     {/*Logo*/}
-                    <Grid item xl={12} xs={4} align="center">
+                    <Grid item align="center">
                         <Logo />
                     </Grid>
 
 
                     <CardContent>
+                        <Box ml={3}>
                         {/*Testo che spiega la funzione del sito*/}
                         <TypedText />
+                        </Box>
 
 
                         {/*Form*/}
@@ -88,8 +95,10 @@ function Home() {
                     setOpen = {setOpen}
                 />
 
-
+                </Box>
             </Grid>
+            <StickyFooter />
+            </Box>
         </>
     )
 }
