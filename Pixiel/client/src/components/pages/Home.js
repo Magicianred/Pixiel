@@ -72,7 +72,9 @@ function Home() {
                                 {/*Form*/}
                                 <Grid item xl={12}  align="center">
                                     <FormToJoin
+                                        nickName={nickName}
                                         setNickName = {setNickName}
+                                        room={room}
                                         setRoom = {setRoom}/>
                                 </Grid>
 
