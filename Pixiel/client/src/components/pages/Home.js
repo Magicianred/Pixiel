@@ -5,6 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Box from '@material-ui/core/Box';
+import {makeStyles} from "@material-ui/core/styles";
 
 //Componenti creati da me
 import Logo from "./elements/home/Logo";
@@ -12,7 +13,6 @@ import JoinButton from "./elements/home/JoinButton";
 import FormToJoin from "./elements/home/FormToJoin";
 import ErrorForm from "./elements/home/ErrorForm";
 import TypedText from "./elements/home/TypedText";
-import {makeStyles} from "@material-ui/core/styles";
 import StickyFooter from "../layout/StickyFooter";
 
 
@@ -99,6 +99,8 @@ function Home() {
 
                     </Box>
                 </Grid>
+
+                {/*Footer*/}
                 <StickyFooter />
             </Box>
         </>
