@@ -54,7 +54,6 @@ const App = () => {
                 <Route path="/credits" component={Credits} />
             </Switch>
 
-            <StickyFooter />
             </ThemeProvider>
 
         </Router>
