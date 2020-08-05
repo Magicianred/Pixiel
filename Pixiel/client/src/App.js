@@ -1,8 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
-import StickyFooter from "./components/layout/StickyFooter";
-
 //Material UI
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
