@@ -6,8 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import InputAdornment from "@material-ui/core/InputAdornment";
 
 //Componenti creati da me
-import ClearButtonRoom from "../ClearButtonRoom";
-import ClearButtonNickName from "../ClearButtonNickName";
+import ClearButtonRoom from "./ClearButtonRoom";
+import ClearButtonNickName from "./ClearButtonNickName";
 
 
 //Colore e style dei form per l'accesso
