@@ -9,14 +9,11 @@ import {deepPurple} from "@material-ui/core/colors";
 
 //Colore e style della App Bar
 const useStyles = makeStyles(() => ({
-    root: {
-        flexGrow: 1,
-    },
     title: {
-        fontFamily: "Nishuki Pixels",
+        fontFamily: "Dogica Pixel Bold",
         flexGrow: 1,
     },
-    colorDefault: {
+    root: {
         backgroundColor: deepPurple[500],
     },
 }));
@@ -27,8 +24,7 @@ const InfoBar = ({ room }) => {
 
     return (
         <>
-            <div className={classes.root}>
-                <AppBar className={classes.colorDefault} color="default">
+                <AppBar position="static" className={classes.root} color="default">
                     <Toolbar>
                         <Typography variant="h6" className={classes.title}>
                             Stanza {room}
@@ -36,7 +32,6 @@ const InfoBar = ({ room }) => {
                         <a href="/"><img src="./images/closeIcon.png" alt="Esci dalla stanza" /></a>
                     </Toolbar>
                 </AppBar>
-            </div>
         </>
     )
 }
