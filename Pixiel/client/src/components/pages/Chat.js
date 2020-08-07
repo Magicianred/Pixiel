@@ -13,16 +13,27 @@ import TextChat from "./elements/chat/TextChat";
 import InputChat from "./elements/chat/InputChat";
 import InfoBar from "./elements/chat/InfoBar";
 import OnlinePeople from "./elements/chat/OnlinePeople";
+import StickyFooter from "../layout/StickyFooter";
 
 
 
 
 const useStyles = makeStyles((theme) => ({
-    outerContainer: {
-        backgroundColor: theme.palette.primary.light,
+    root: {
+        display: 'flex',
+        flexDirection: 'column',
+        minHeight: '100vh',
     },
-    container: {
-        backgroundColor: deepPurple[100],
+    mainContainer: {
+    },
+    leftContainer: {
+        backgroundColor: theme.palette.primary.main,
+        padding: '30px 30px',
+        [theme.breakpoints.down('sm')]: {
+            padding: '10px 10px',
+        },
+    },
+    rightContainer: {
     }
 }));
 
@@ -83,55 +94,37 @@ const Chat = ({ location }) => {
 
     return (
         <>
-            <Box
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                height="100vh"
-                className={classes.outerContainer}
-            >
-                {/*Permette di vedere chi è online in quel momento*/}
-                <OnlinePeople users={users} />
+            <Box className={classes.root}>
 
+                {/*Barra superiore con le informazioni sulla chat*/}
+                <InfoBar room={room} />
 
-                <Box
-                    display="flex"
-                    justifyContent="space-between"
-                    direction="column"
-                    mt="63px"
-                    xl={12}
-                    sm={12}
-                    xs={12}
-                    height="65%"
-                    width="80%"
-                    className={classes.container}
-                >
-                    {/*Barra superiore con le informazioni sulla chat*/}
-                    <InfoBar
-                        room={room}
-                    />
+                <Box className={classes.mainContainer}>
+                    <Box className={classes.leftContainer}>
+                        {/*Permette di vedere chi è online in quel momento*/}
+                        <OnlinePeople users={users} />
+                    </Box>
 
-
-                    <Grid
-                        container
-                        direction="column"
-                    >
+                    <Box className={classes.rightContainer}>
                         {/*Chat con i messaggi*/}
                         <TextChat
                             messages={messages}
                             nickName={nickName}
                         />
-
-
-                    {/*Parte della Chat per immettere il testo da inviare*/}
-                    <InputChat
-                        message={message}
-                        setMessage={setMessage}
-                        socket={socket}
-                    />
-                    </Grid>
-
+                        {/*Parte della Chat per immettere il testo da inviare*/}
+                        <InputChat
+                            message={message}
+                            setMessage={setMessage}
+                            socket={socket}
+                        />
+                    </Box>
                 </Box>
+
+
+                {/*Footer*/}
+                <StickyFooter />
+
+
             </Box>
         </>
     )
