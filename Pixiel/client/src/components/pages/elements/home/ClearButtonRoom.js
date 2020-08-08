@@ -1,4 +1,7 @@
 import React from "react";
+
+//Material-UI
+import IconButton from '@material-ui/core/IconButton';
 import {makeStyles} from "@material-ui/core/styles";
 
 
@@ -9,8 +12,8 @@ const useStyles = makeStyles((theme) => ({
         cursor: 'pointer',
         backgroundColor: 'transparent',
         border: 0,
-        fontSize: 30,
         position: 'relative',
+        fontFamily: 'Dogica Pixel',
     }
 }));
 
@@ -29,12 +32,13 @@ const ClearButtonNickName = ({ room, setRoom }) => {
         <>
             {
                 room.length !== 0 &&
-                <button
+                <IconButton
                     onClick={handelClick}
+                    size="small"
                     className={classes.root}
                 >
                     &times;
-                </button>
+                </IconButton>
             }
         </>
     );
