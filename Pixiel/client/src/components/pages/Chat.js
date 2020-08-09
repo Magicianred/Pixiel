@@ -28,9 +28,9 @@ const useStyles = makeStyles((theme) => ({
     },
     leftContainer: {
         backgroundColor: theme.palette.primary.main,
-        padding: '30px 30px',
+        padding: '20px 0 10px',
         [theme.breakpoints.down('sm')]: {
-            padding: '10px 10px',
+            padding: '10px 0 10px',
         },
     },
     rightContainer: {
