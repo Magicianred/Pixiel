@@ -29,6 +29,10 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.only('xs')]: {
             maxWidth: 300,
         },
+        [theme.breakpoints.only('lg')]: {
+            maxHeight: 450,
+            marginTop: -35,
+        },
     }
 }));
 
