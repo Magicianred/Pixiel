@@ -23,22 +23,25 @@ io.on('connection', (socket) => {
         if(error) return callback(error);
 
         //Messaggio che appare all'utente appena entrato
-        socket.emit('message', formatMessage( 'admin' ,`${user.nickName}, benvenuto nella stanza ${user.room}`));
+        socket.emit('message', formatMessage( 'Admin' ,`${user.nickName} benvenuto/a nella stanza ${user.room}!`));
         //Alle persone nella stanza appare un messaggio che permettere di sapere chi è entrato in quel momento
-        socket.broadcast.to(user.room).emit('message', formatMessage( 'admin', `${user.nickName} è entrato nella stanza!`));
+        socket.broadcast.to(user.room).emit('message', formatMessage( 'Admin', `${user.nickName} è entrato/a nella stanza!`));
 
         socket.join(user.room);
 
+        //Aggiunge l'utente quando entra nella chat
         io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) })
 
         callback();
     });
 
 
+    //Quando mandi un messaggio
     socket.on('sendMessage', ( message, callback ) => {
         const user = getUser(socket.id);
 
         io.to(user.room).emit('message', formatMessage( user.nickName, message ));
+
         io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
         callback();
@@ -50,7 +53,10 @@ io.on('connection', (socket) => {
        const user = removeUser(socket.id);
 
        if(user){
-           io.to(user.room).emit('message', formatMessage( 'admin', `${user.nickName} si è disconnesso.`))
+           io.to(user.room).emit('message', formatMessage( 'Admin', `${user.nickName} si è disconnesso.`));
+
+           //Elimina gli utenti disconnessi dalla chat
+           io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
        }
     })
 });
