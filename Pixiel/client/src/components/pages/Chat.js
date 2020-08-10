@@ -4,8 +4,6 @@ import io from 'socket.io-client';
 
 //Material-UI
 import {makeStyles} from "@material-ui/core/styles";
-import {deepPurple} from "@material-ui/core/colors";
-import Grid from '@material-ui/core/Grid';
 import Box from "@material-ui/core/Box";
 
 //Componenti creati da me
@@ -23,17 +21,16 @@ const useStyles = makeStyles((theme) => ({
         display: 'flex',
         flexDirection: 'column',
         minHeight: '100vh',
+        backgroundColor: theme.palette.primary.main,
     },
-    mainContainer: {
-    },
-    leftContainer: {
+    topContainer: {
         backgroundColor: theme.palette.primary.main,
         padding: '20px 0 10px',
         [theme.breakpoints.down('sm')]: {
             padding: '10px 0 10px',
         },
     },
-    rightContainer: {
+    bottomContainer: {
     }
 }));
 
@@ -67,8 +64,10 @@ const Chat = ({ location }) => {
         setRoom(room);
 
         //Permette di visualizzare i dati immessi come nickName e room
-        socket.emit('join', { nickName, room }, () => {
-
+        socket.emit('join', { nickName, room }, (error) => {
+            if(error) {
+                alert(error);
+            }
         });
 
         //Parte di codice che riguarda la disconnessione di un utente
@@ -89,9 +88,6 @@ const Chat = ({ location }) => {
         });
     }, []);
 
-
-    console.log(message, messages);
-
     return (
         <>
             <Box className={classes.root}>
@@ -99,25 +95,23 @@ const Chat = ({ location }) => {
                 {/*Barra superiore con le informazioni sulla chat*/}
                 <InfoBar room={room} />
 
-                <Box className={classes.mainContainer}>
-                    <Box className={classes.leftContainer}>
-                        {/*Permette di vedere chi è online in quel momento*/}
-                        <OnlinePeople users={users} />
-                    </Box>
+                <Box className={classes.topContainer}>
+                    {/*Permette di vedere chi è online in quel momento*/}
+                    <OnlinePeople users={users} />
+                </Box>
 
-                    <Box className={classes.rightContainer}>
-                        {/*Chat con i messaggi*/}
-                        <TextChat
-                            messages={messages}
-                            nickName={nickName}
-                        />
-                        {/*Parte della Chat per immettere il testo da inviare*/}
-                        <InputChat
-                            message={message}
-                            setMessage={setMessage}
-                            socket={socket}
-                        />
-                    </Box>
+                <Box className={classes.bottomContainer}>
+                    {/*Chat con i messaggi*/}
+                    <TextChat
+                        messages={messages}
+                        nickName={nickName}
+                    />
+                    {/*Parte della Chat per immettere il testo da inviare*/}
+                    <InputChat
+                        message={message}
+                        setMessage={setMessage}
+                        socket={socket}
+                    />
                 </Box>
 
 
