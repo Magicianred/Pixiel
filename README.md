@@ -5,8 +5,11 @@ Pixiel is a project for Start2impact - It's a chat room where people can chat lo
 <br>
 <br>
 I'll use:
-- Node.js
-- React.js
+- [React.js](https://reactjs.org/) - Javascript Library
+- [Material-UI](https://material-ui.com/) - React UI Framework
+- [Node.js](https://nodejs.org/en/) - Server Environment
+- [Express.js](https://expressjs.com/) - Server Framework
+- [Socket.io](https://socket.io/) - Realtime Engine
 
 --- 
 
