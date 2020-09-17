@@ -67,6 +67,8 @@ const Chat = ({ location }) => {
         socket.emit('join', { nickName, room }, (error) => {
             if(error) {
                 alert(error);
+                //Esegue l'errore e poi ritorna alla pagina del login
+                window.location = '/';
             }
         });
 

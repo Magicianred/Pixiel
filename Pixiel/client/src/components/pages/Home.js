@@ -11,9 +11,10 @@ import {makeStyles} from "@material-ui/core/styles";
 import Logo from "./elements/home/Logo";
 import JoinButton from "./elements/home/JoinButton";
 import FormToJoin from "./elements/home/FormToJoin";
-import ErrorForm from "./elements/home/ErrorForm";
+import ErrorForm from "./elements/home/Error/ErrorForm";
 import TypedText from "./elements/home/TypedText";
 import StickyFooter from "../layout/StickyFooter";
+import ErrorName from "./elements/home/Error/ErrorName";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -41,7 +42,11 @@ function Home() {
     //Hooks
     const [nickName, setNickName] = useState('');
     const [room, setRoom] = useState('');
-    const [open, setOpen] = useState(false);
+
+    //Errori
+    const [errorForm, setErrorForm] = useState(false);
+    const [errorName, setErrorName] = useState(false);
+
 
     const classes = useStyles();
 
@@ -88,7 +93,8 @@ function Home() {
                                     <JoinButton
                                         nickName = {nickName}
                                         room = {room}
-                                        setOpen = {setOpen}
+                                        setErrorName = {setErrorName}
+                                        setErrorForm = {setErrorForm}
                                     />
                                 </Grid>
                             </CardContent>
@@ -97,9 +103,16 @@ function Home() {
 
                         {/*Errore che compare quando uno dei due form non viene riempito e viene clickato il pultante "accedi"*/}
                         <ErrorForm
-                            open = {open}
-                            setOpen = {setOpen}
+                            errorForm = {errorForm}
+                            setErrorForm = {setErrorForm}
                         />
+
+
+                        {/*Errore che compare se un utente digita lo stesso nome per entrare nella medesima stanza*/}
+                        <ErrorName
+                            errorName = {errorName}
+                            setErrorName = {setErrorName}
+                            />
 
                     </Box>
                 </Grid>
