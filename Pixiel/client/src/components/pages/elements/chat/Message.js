@@ -4,6 +4,7 @@ import ReactEmoji from 'react-emoji';
 //Material-UI
 import Box from '@material-ui/core/Box';
 import {makeStyles} from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 
 
 
@@ -12,12 +13,21 @@ const useStyles = makeStyles((theme) => ({
         fontFamily: "Nishuki Pixels"
     },
     messageBox1: {
+        borderStyle: 'dashed',
+        borderWidth: '5px',
+        borderColor: theme.palette.secondary.main,
         backgroundColor: theme.palette.primary.main,
         color: theme.palette.secondary.contrastText,
     },
     messageBox2: {
+        borderStyle: 'dashed',
+        borderWidth: '5px',
+        borderColor: theme.palette.primary.main,
         backgroundColor: theme.palette.secondary.main,
         color: theme.palette.secondary.contrastText,
+    },
+    typography: {
+            fontSize: 15,
     }
 }));
 
@@ -52,15 +62,13 @@ const Message = ({ message: { user, text, time }, nickName }) => {
                             py="5px"
                             px="20px"
                         >
-                            <Box width="100%"><p>{ReactEmoji.emojify(text)}</p></Box>
+                            <Box width="100%">
+                                <Box textAlign="right"><Typography variant="body1" className={classes.typography}><strong>{trimmedNickName} {time}</strong></Typography></Box>
+                                <Typography variant="body2" className={classes.typography}>{ReactEmoji.emojify(text)}</Typography>
+
+                            </Box>
                         </Box>
 
-                        <Box
-                            display="flex"
-                            alignItems="center"
-                            pl="10px">
-                            <p>{trimmedNickName} {time}</p>
-                        </Box>
                     </Box>
                 </>
             )
@@ -74,19 +82,14 @@ const Message = ({ message: { user, text, time }, nickName }) => {
                         className={classes.root}
                     >
                         <Box
-                            display="flex"
-                            alignItems="center"
-                            pr="10px">
-                            <p>{user} {time}</p>
-                        </Box>
-                        <Box
                             display="inline-block"
                             className={classes.messageBox2}
                             maxWidth="80%"
                             py="5px"
                             px="20px"
                         >
-                            <Box width="100%"><p>{ReactEmoji.emojify(text)}</p></Box>
+                            <Box textAlign="left"><Typography variant="body1" className={classes.typography}><strong>{user} {time}</strong></Typography></Box>
+                            <Box width="100%"><Typography variant="body2" className={classes.typography}>{ReactEmoji.emojify(text)}</Typography></Box>
                         </Box>
                     </Box>
                 </>
