@@ -7,11 +7,24 @@ import Box from "@material-ui/core/Box";
 
 //Creati da me
 import Message from "./Message";
+import {Container} from "@material-ui/core";
+import ChatInformation from "./ChatInformation";
+
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        height: '49vh',
+        backgroundColor: theme.palette.primary.light,
     },
+    messages: {
+        padding: 5% 0,
+        overflowY: 'auto',
+        flex: 'auto',
+        height: '49vh',
+        behavior: 'smooth',
+    }
 }));
+
 
 
 const TextChat = ({ messages, nickName }) => {
@@ -20,22 +33,22 @@ const TextChat = ({ messages, nickName }) => {
 
     return (
         <>
-            <Box
-                pt="5%"
-                pr={0}
-                overflow="auto"
-            >
-            <ScrollToBottom>
-                {messages.map((message, i) =>
-                    <div key={i}>
-                        <Message
-                            message={message}
-                            nickName={nickName}
-                        />
-                    </div>
-                )}
-            </ScrollToBottom>
-            </Box>
+            <Container className={classes.root}>
+                <ChatInformation />
+                <ScrollToBottom
+                    className={classes.messages}
+                    mode="bottom"
+                >
+                    {messages.map((message, i) =>
+                        <div key={i}>
+                            <Message
+                                message={message}
+                                nickName={nickName}
+                            />
+                        </div>
+                    )}
+                </ScrollToBottom>
+            </Container>
         </>
     )
 }
