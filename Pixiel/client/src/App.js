@@ -37,6 +37,9 @@ const theme = createMuiTheme(
             body1: {
                 fontFamily: "Dogica Pixel Bold"
             },
+            body2: {
+                fontFamily: "Dogica Pixel"
+            },
         }
     });
 
