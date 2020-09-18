@@ -73,7 +73,7 @@ const OnlinePeople = ({ users }) => {
             {
                 users ? (
                         <>
-                            <Grid direction="row" className={classes.root}>
+                            <Grid className={classes.root}>
                                 <h1 className={classes.h1}>Persone online</h1>
 
 

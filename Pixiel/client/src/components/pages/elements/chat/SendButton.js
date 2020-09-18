@@ -4,7 +4,6 @@ import React from 'react';
 import {withStyles} from "@material-ui/core/styles";
 import {deepPurple} from "@material-ui/core/colors";
 import Button from "@material-ui/core/Button";
-import {Link} from "react-router-dom";
 
 //Colore e style del bottone per l'accesso
 const ColorButton = withStyles((theme) => ({

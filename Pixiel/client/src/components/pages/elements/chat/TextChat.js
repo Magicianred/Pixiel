@@ -3,7 +3,6 @@ import ScrollToBottom from 'react-scroll-to-bottom';
 
 //Material-UI
 import {makeStyles} from '@material-ui/core/styles';
-import Box from "@material-ui/core/Box";
 
 //Creati da me
 import Message from "./Message";

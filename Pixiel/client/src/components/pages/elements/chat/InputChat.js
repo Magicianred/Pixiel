@@ -14,7 +14,9 @@ import SendButton from "./SendButton";
 
 const useStyles = makeStyles((theme) => ({
     root: {
+        flex: 1,
         color: deepPurple[500],
+        backgroundColor: theme.palette.primary.light,
     },
     [theme.breakpoints.down('sm')]: {
         formSize: {
@@ -39,16 +41,16 @@ const InputChat = ({ message, setMessage, socket }) => {
 
     return (
         <>
-            <Container fluid>
+            <Container className={classes.root}>
                 <Box
+                    justify="center"
+                    alignItems="flex-end"
                     justifyContent="center"
                     display="flex">
                     <Box
                         width="80%"
-                        p="5%"
                         className={classes.formSize}
                     >
-                        <form className={classes.root} noValidate autoComplete="off">
                             <TextField
                                 fullWidth
                                 style={{ margin: 8 }}
@@ -59,7 +61,6 @@ const InputChat = ({ message, setMessage, socket }) => {
                                 onChange={(event) => setMessage(event.target.value)}
                                 onKeyPress={event => event.key === 'Enter' ? sendMessage(event) : null }
                             />
-                        </form>
                     </Box>
 
                     <Box  mt="25px">
